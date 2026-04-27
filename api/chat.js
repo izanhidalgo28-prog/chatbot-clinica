@@ -24,7 +24,7 @@ module.exports = async function handler(req, res) {
       }),
     });
 
-    const data = await response.json();
+    const data = await response.json();console.log("Data de Anthropic:", JSON.stringify(data));
     const reply = data.content?.[0]?.text || data.content?.map((b) => b.text || "").join("") || "Sin respuesta";
     return res.status(200).json({ reply });
 
