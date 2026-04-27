@@ -182,10 +182,11 @@ const reply = data.reply || "Lo siento, no pude procesar tu consulta.";
         loading.textContent = reply;
         history.push({ role: "assistant", content: reply });
 
-    } catch {
-      loading.className = "msg bot";
-      loading.textContent = "Error de conexión. Por favor inténtalo de nuevo.";
-    }
+   } catch (error) {
+  console.log("Error capturado:", error);
+  loading.className = "msg bot";
+  loading.textContent = "Error de conexión. Por favor inténtalo de nuevo.";
+}
 
     document.getElementById("msgs").scrollTop = 9999;
   }
