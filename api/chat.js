@@ -25,7 +25,7 @@ module.exports = async function handler(req, res) {
     });
 
     const data = await response.json();
-    const reply = data.content?.map((b) => b.text || "").join("") || "";
+    const reply = data.content?.[0]?.text || data.content?.map((b) => b.text || "").join("") || "Sin respuesta";
     return res.status(200).json({ reply });
 
   } catch (error) {
